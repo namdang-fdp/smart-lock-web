@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - IoT System</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 50px; }
+    .container { width: 300px; margin: auto; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Đăng nhập</h2>
+    {% with messages = get_flashed_messages(category_filter=["error"]) %}
+      {% if messages %}
+        <div class="error">
+          {% for msg in messages %}
+            <p>{{ msg }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    <form method="post">
+      <label for="username">Tên đăng nhập:</label><br>
+      <input type="text" id="username" name="username" required><br><br>
+      <label for="password">Mật khẩu:</label><br>
+      <input type="password" id="password" name="password" required><br><br>
+      <input type="submit" value="Đăng nhập">
+    </form>
+  </div>
+</body>
+</html>

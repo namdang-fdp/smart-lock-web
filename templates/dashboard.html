@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - IoT System</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { border-collapse: collapse; width: 80%; margin: 20px auto; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    th { background-color: #f2f2f2; }
+    .logout { text-align: center; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center;">Chào mừng, {{ username }}!</h2>
+  <h3 style="text-align:center;">Dữ liệu đo đạc</h3>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nội dung</th>
+      <th>Thời gian</th>
+    </tr>
+    {% for item in data %}
+    <tr>
+      <td>{{ item.id }}</td>
+      <td>{{ item.value }}</td>
+      <td>{{ item.timestamp }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <div class="logout">
+    <a href="{{ url_for('logout') }}">Đăng xuất</a>
+  </div>
+</body>
+</html>

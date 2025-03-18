@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Sửa Thông Tin Người Dùng</title>
+    <style>
+      label {
+        display: block;
+        margin-top: 8px;
+      }
+      input, select {
+        padding: 6px;
+        width: 250px;
+      }
+      button {
+        margin-top: 12px;
+        padding: 8px 16px;
+      }
+      a {
+        text-decoration: none;
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sửa Thông Tin Cho User: {{ username }}</h1>
+    <form action="{{ url_for('edit_user', username=username) }}" method="post">
+      <label for="password">Mật khẩu mới:</label>
+      <input type="password" id="password" name="password" value="{{ user.password }}" required>
+
+      <label for="role">Vai trò:</label>
+      <select id="role" name="role">
+        <option value="user" {% if user.role == 'user' %}selected{% endif %}>User</option>
+        <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+      </select>
+
+      <button type="submit">Cập nhật</button>
+    </form>
+    <p><a href="{{ url_for('admin') }}">Trở lại trang quản trị</a></p>
+  </body>
+</html>

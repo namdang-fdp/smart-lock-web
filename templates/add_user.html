@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Thêm Người Dùng</title>
+    <style>
+      label {
+        display: block;
+        margin-top: 8px;
+      }
+      input, select {
+        padding: 6px;
+        width: 250px;
+      }
+      button {
+        margin-top: 12px;
+        padding: 8px 16px;
+      }
+      a {
+        text-decoration: none;
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Thêm Người Dùng Mới</h1>
+    <form action="{{ url_for('add_user') }}" method="post">
+      <label for="username">Tên đăng nhập:</label>
+      <input type="text" id="username" name="username" required />
+
+      <label for="password">Mật khẩu:</label>
+      <input type="password" id="password" name="password" required />
+
+      <label for="role">Vai trò:</label>
+      <select id="role" name="role">
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+      </select>
+
+      <button type="submit">Thêm Người Dùng</button>
+    </form>
+    <p><a href="{{ url_for('admin') }}">Trở lại trang quản trị</a></p>
+  </body>
+</html>
